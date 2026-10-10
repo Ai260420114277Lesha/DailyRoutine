@@ -504,47 +504,78 @@
 
   /* ---------- Mobile ---------- */
   @media (max-width: 620px) {
-    .container { padding: 16px 14px 120px; }
-    header { margin-bottom: 16px; }
-    .brand span.brand-text { display: none; }
-    .nav-tabs button { padding: 7px 12px; font-size: 12.5px; }
+  .container { padding: 16px 14px 120px; }
+  header { margin-bottom: 16px; }
+  .brand span.brand-text { display: none; }
+  .nav-tabs button { padding: 7px 12px; font-size: 12.5px; }
 
-    .day-bar .today-btn { padding: 0 11px; font-size: 12.5px; }
+  .day-bar .today-btn { padding: 0 11px; font-size: 12.5px; }
 
-    .task { padding: 12px 12px 12px 14px; gap: 8px; }
-    .task .title { font-size: 14px; }
-    .task .actions { gap: 4px; }
-    .task .actions button { width: 30px; height: 30px; font-size: 13px; }
+  .task { padding: 12px 12px 12px 14px; gap: 8px; }
+  .task .title { font-size: 14px; }
+  .task .actions { gap: 4px; }
+  .task .actions button { width: 30px; height: 30px; font-size: 13px; }
 
-    .fab {
-      right: 16px;
-      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-      width: 56px; height: 56px; padding: 0;
-      border-radius: 50%;
-      justify-content: center;
-    }
-    .fab .label { display: none; }
-    .fab .plus { font-size: 26px; margin: 0; }
-
-    .overlay {
-      padding: 0;
-      align-items: flex-end;
-    }
-    .modal {
-      max-width: 100%;
-      border-radius: 22px 22px 0 0;
-      padding: 10px 20px calc(24px + env(safe-area-inset-bottom, 0px));
-      animation: slideUp .3s cubic-bezier(.2, .9, .3, 1);
-      max-height: 92vh;
-      max-height: 92dvh;
-    }
-    .modal-handle { display: block; }
-
-    .calendar { padding: 14px 12px; }
-    .cal-grid { gap: 3px; }
-    .cal-cell { border-radius: 7px; }
-    .legend { gap: 6px 12px; font-size: 11.5px; }
+  .fab {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    width: 56px; height: 56px; padding: 0;
+    border-radius: 50%;
+    justify-content: center;
   }
+  .fab .label { display: none; }
+  .fab .plus { font-size: 26px; margin: 0; }
+
+  .overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+  .modal {
+    max-width: 100%;
+    border-radius: 22px 22px 0 0;
+    padding: 10px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+    animation: slideUp .3s cubic-bezier(.2, .9, .3, 1);
+    max-height: 92vh;
+    max-height: 92dvh;
+  }
+  .modal-handle { display: block; }
+
+  /* ---------- Календарь на мобильных ---------- */
+  .calendar { padding: 14px 10px; }
+  .cal-grid { gap: 3px; }
+
+  /* Отказываемся от квадратной формы — используем фиксированную высоту */
+  .cal-cell {
+    aspect-ratio: auto;
+    height: 34px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .cal-cell:hover { transform: none; }  /* убираем «дрожание» на тач-устройствах */
+  .cal-cell:active { transform: scale(.94); }
+
+  /* Тултипы на тач-устройствах мешают — показываем их только по тапу */
+  .cal-cell .tip {
+    display: none;
+  }
+
+  .cal-head {
+    font-size: 9.5px;
+    padding: 3px 0;
+  }
+
+  .legend { gap: 5px 10px; font-size: 11px; margin-top: 12px; }
+  .legend .dot { width: 10px; height: 10px; }
+}
+
+/* Совсем узкие экраны (iPhone SE и т.п.) */
+@media (max-width: 380px) {
+  .cal-cell { height: 30px; font-size: 10.5px; border-radius: 6px; }
+  .cal-grid { gap: 2px; }
+  .calendar { padding: 12px 8px; }
+  .cal-head { font-size: 9px; }
+}
 </style>
 </head>
 <body>
